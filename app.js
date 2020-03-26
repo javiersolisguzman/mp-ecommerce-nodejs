@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/detail', function (req, res) {
-    const domain = 'https://javiersolis-mp-commerce-nodejs.herokuapp.com';
+    const domain = req.protocol + '://' + req.get('host');
     console.log('el domain', domain);
     
     mercadopago.configure({
@@ -78,10 +78,11 @@ app.get('/detail', function (req, res) {
     
 });
 //5031 7557 3453 0604
+//"password": "qatest5413"
+//"email": "test_user_72444563@testuser.com"
 
-
-app.use('/notifications', function(req, res){
-
+app.post('/notifications', function(req, res){
+    return res.send('ok');
 });
 
 app.use(express.static('assets'));
